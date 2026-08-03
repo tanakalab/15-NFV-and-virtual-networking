@@ -74,8 +74,6 @@ D-ViNE方式におけるVN要求の棄却率を改善する手法を提案して
 当研究室は，貪欲法とダイクストラ法を組み合わせた
 二ノ宮手法と寺生手法を提案している
 \cite{second}\cite{third}．
-これらの手法は，計算量またはVN要求の棄却率の
-改善を目的とする．
 本研究では，当研究室が提案した2手法を
 VNEシミュレータALEVINに実装し，両手法の性能を比較する．
 
@@ -91,12 +89,30 @@ VNリンク上の数値は帯域幅需要を示す．
 物理ネットワーク内の長方形に記した数値はCPU資源を示し，
 物理リンク上の数値は帯域幅資源を示す．
 
-\begin{figure}[H]
+\begin{figure}[tb]
   \centering
-  \includegraphics[width=8.0cm]{zu1.pdf}
-  \caption{VN要求と物理ネットワークの例}
-  \label{fig:network}
+  \includegraphics[
+    width=0.70\linewidth,
+    height=3.0cm,
+    keepaspectratio
+  ]{VN1.pdf}
+
+  \vspace{-1mm}
+  {\footnotesize （a）埋め込み前}
+
+  \vspace{1mm}
+  \includegraphics[
+    width=0.70\linewidth,
+    height=3.0cm,
+    keepaspectratio
+  ]{VN2.pdf}
+
+  \vspace{-1mm}
+  {\footnotesize （b）埋め込み後}
+  \caption{VN要求と二ノ宮手法による埋め込み例}
+  \label{fig:mapping-example}
 \end{figure}
+
 
 \section{既存手法}
 
@@ -137,7 +153,7 @@ $\mathcal{O}(N_VN_S^2)$となる．
 \section{ALEVIN}
 
 \noindent　ALEVIN（ALgorithms for Embedding VIrtual Networks）は，
-VNEアルゴリズムの実装と性能評価を支援するシミュレータである．
+VNEアルゴリズムの実装と性能評価を支援するシミュレータである\cite{forth}．
 ALEVINは，物理ネットワークと複数のVN要求を生成し，
 各アルゴリズムによる埋め込み結果を評価する．
 また，ALEVINはノードマッピングとリンクマッピングを
@@ -150,8 +166,7 @@ ALEVINは，物理ネットワークと複数のVN要求を生成し，
 
 \subsection{評価方法}  
 \noindent　本研究では，VN要求の受理性能と物理資源の利用効率を
-評価するため，AcceptedVnrRatio，CostRevenue，
-AvPathLengthを用いる．
+評価するため，AcceptedVnrRatio，CostRevenue．
 
 AcceptedVnrRatioは，全VN要求に対する
 受理したVN要求の割合を表す．
@@ -204,7 +219,7 @@ CostRevenueを次式で表す．
   \label{eq:cost-revenue}
 \end{equation}
 CostRevenueが小さいほど，
-少ない物理資源でVN要求を埋め込める．
+物理資源の利用効率が高い．
 
 
 \section{比較実験}
@@ -225,7 +240,7 @@ VN要求には，表\ref{tab:demand-condition}に示す
 以上から，物理ノード数と需要条件を組み合わせた
 9種類のシナリオを用いる．
 
-\begin{table}[H]
+\begin{table}[tb]
   \centering
   \caption{VN要求の需要条件}
   \label{tab:demand-condition}
@@ -240,41 +255,48 @@ VN要求には，表\ref{tab:demand-condition}に示す
   \end{tabular}
 \end{table}
 
-\section{実験結果}
+\subsection{実験結果}
+\noindent
 \noindent
 各実験条件について5回の実験を行い，
-受理率，CostRevenue，実行時間の平均値を求めた．
+各評価指標の平均値を求めた．
 図\ref{fig:accepted}に受理率，
-図\ref{fig:costrevenue}にCostRevenue，
-図\ref{fig:time}に実行時間を示す．
-各図の横軸は実験条件を表す．
-横軸の上段は物理ノード数を示し，
+図\ref{fig:time}に実行時間，
+図\ref{fig:costrevenue}にCostRevenueを示す．
+各図の横軸の上段は物理ノード数を示し，
 下段はCPU需要と帯域幅需要の最大値を示す．
 
-
-\begin{figure}[tb]
+\begin{figure}[t]
   \centering
-  \includegraphics[width=0.52\textwidth,
-    height=5cm,
-    keepaspectratio]{accepted_ratio.pdf}
+  \includegraphics[
+    width=\linewidth,
+    height=4.6cm,
+    keepaspectratio
+  ]{accepted_ratio.pdf}
   \caption{各実験条件におけるVN要求の受理率}
   \label{fig:accepted}
 \end{figure}
-\begin{figure}[tb]
+
+\begin{figure}[t]
   \centering
-  \includegraphics[width=0.52\textwidth,
-    height=5cm,
-    keepaspectratio]{execution_time.pdf}
- \caption{各実験条件における実行時間}
+  \includegraphics[
+    width=\linewidth,
+    height=4.6cm,
+    keepaspectratio
+  ]{execution_time.pdf}
+  \caption{各実験条件における実行時間}
   \label{fig:time}
 \end{figure}
-\begin{figure}[tb]
+
+\begin{figure}[t]
   \centering
-  \includegraphics[width=0.52\textwidth,
-    height=5cm,
-    keepaspectratio]{cost_revenue.pdf}
- \caption{各実験条件におけるCostRevenue}
-  \label{fig:time}
+  \includegraphics[
+    width=\linewidth,
+    height=4.6cm,
+    keepaspectratio
+  ]{cost_revenue.pdf}
+  \caption{各実験条件におけるCostRevenue}
+  \label{fig:costrevenue}
 \end{figure}
 
 
@@ -301,7 +323,7 @@ VN要求には，表\ref{tab:demand-condition}に示す
 すべての条件で寺生手法より短くなった．
 
 
-\section{考察}
+\subsection{考察}
 \noindent
 　寺生手法は，多くの条件で高いAcceptedVnrRatioを示し，
 すべての条件で低いCostRevenueを示した．
