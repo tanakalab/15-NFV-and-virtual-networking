@@ -125,8 +125,7 @@ VNリンク上の数値は帯域幅需要を示す．
 その後，仮想リンクを最短経路を構成する物理リンクへ埋め込む．
 
 \subsection{二ノ宮手法}
-\noindent
-二ノ宮手法は，最初のVN要求に貪欲法を適用する．
+\noindent　二ノ宮手法は，最初のVN要求に貪欲法を適用する．
 2つ目以降のVN要求では，
 帯域幅需要を満たす物理リンクの端点を
 仮想ノードの割当候補とする．
@@ -138,8 +137,7 @@ VNリンク上の数値は帯域幅需要を示す．
 $\mathcal{O}(N_VN_S^3)$となる．
 
 \subsection{寺生手法}
-\noindent
-寺生手法は，接続する仮想リンクの帯域幅需要合計が
+\noindent　寺生手法は，接続する仮想リンクの帯域幅需要合計が
 大きい仮想ノードから順に処理する．
 本手法は，CPU需要を満たす物理ノードの中から，
 接続する物理リンクの残余帯域合計が
@@ -166,7 +164,7 @@ ALEVINは，物理ネットワークと複数のVN要求を生成し，
 
 \subsection{評価方法}  
 \noindent　本研究では，VN要求の受理性能と物理資源の利用効率を
-評価するため，AcceptedVnrRatio，CostRevenue．
+評価するため，AcceptedVnrRatio，CostRevenueを用いる．
 
 AcceptedVnrRatioは，全VN要求に対する
 受理したVN要求の割合を表す．
@@ -224,8 +222,7 @@ CostRevenueが小さいほど，
 
 \section{比較実験}
 
-\noindent
-本実験では，寺生手法と二ノ宮手法の性能を比較する．
+\noindent　本実験では，寺生手法と二ノ宮手法の性能を比較する．
 物理ネットワークのノード数を40，60，80とし，
 各物理ネットワークに10個のVN要求を順に埋め込む．
 物理ノードのCPU資源と物理リンクの帯域幅資源は，
@@ -257,8 +254,7 @@ VN要求には，表\ref{tab:demand-condition}に示す
 
 \subsection{実験結果}
 \noindent
-\noindent
-各実験条件について5回の実験を行い，
+\noindent　各実験条件について5回の実験を行い，
 各評価指標の平均値を求めた．
 図\ref{fig:accepted}に受理率，
 図\ref{fig:time}に実行時間，
@@ -301,7 +297,6 @@ VN要求には，表\ref{tab:demand-condition}に示す
 
 
 \noindent　寺生手法のAcceptedVnrRatioは，
-寺生手法のAcceptedVnrRatioは，
 9条件中6条件で二ノ宮手法を上回った．
 物理ノード数60，CPU需要の最大値10，
 帯域幅需要の最大値25の条件では，
@@ -324,8 +319,7 @@ VN要求には，表\ref{tab:demand-condition}に示す
 
 
 \subsection{考察}
-\noindent
-　寺生手法は，多くの条件で高いAcceptedVnrRatioを示し，
+\noindent　寺生手法は，多くの条件で高いAcceptedVnrRatioを示し，
 すべての条件で低いCostRevenueを示した．
 この結果から，物理リンクの残余帯域合計に基づく
 ノード選択は，VN要求の受理性能と
@@ -342,8 +336,7 @@ VN要求には，表\ref{tab:demand-condition}に示す
 
 
 \section{今後の課題}
-\noindent
-今後は，仮想ノード数を固定した上で
+\noindent　今後は，仮想ノード数を固定した上で
 物理ネットワークの規模を変更し，
 各評価指標への影響を検証する．
 また，各マッピング処理の実行時間と棄却数を記録し，
